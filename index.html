@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="startTime()"">
+    
+    <div class="clockdate">
+        <span id="time"></span>
+        <span id="date"></span>
+    </div>
+    <script>
+        function startTime() {
+            var today= new Date(),
+            hours = today.getHours(),
+            minutes = today.getMinutes(),
+            date = today.getDate(),
+            day = today.getDay(),
+            month = today.getMonth();
+            
+            hours = (hours == 0) ? 12 : hours;
+            hours = (hours > 12) ? hours - 12 : hours;
+
+            hours = checkTime(hours);
+            minutes = checkTime(minutes);
+
+            var dia = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Vierne", "Sabado"],
+            mes = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+
+            var hr = document.getElementById('time').innerHTML = hours + ":" + minutes,
+            dt = document.getElementById('date').innerHTML = dia[day] + ", " + date + " De " + mes[month];
+
+            var time = setTimeout(function(){startTime();},500);
+        }
+        function checkTime(e){
+            if( e < 10){
+                e = "0" + e;
+            }
+            return e;
+        }
+    </script>
+</body>
+</html>
