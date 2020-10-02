@@ -4,7 +4,7 @@
     --shadow: rgba(13,39,80,.26)
 }
 body {
-    min-height: 100vw;
+    min-height: 100vh;
     background: var(--bg);
     overflow: hidden;
 }
